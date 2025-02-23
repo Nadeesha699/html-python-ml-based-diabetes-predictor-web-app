@@ -1,6 +1,6 @@
 body {
   background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 82, 54, 0.6)),
-    url(./images/2641087.gif);
+    url(../images/2641087.gif);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,6 +22,12 @@ div {
   grid-template-columns: repeat(3, auto);
   background-color: rgba(0, 0, 0, 0.332);
 }
+
+label {
+  background: linear-gradient(to right, #ff0051, #f5c800);
+  color: transparent; 
+  background-clip: text;
+}  
 
 h1 {
   color: rgb(255, 255, 255);
