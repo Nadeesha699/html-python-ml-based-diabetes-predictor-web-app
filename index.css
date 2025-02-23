@@ -1,0 +1,117 @@
+body {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 82, 54, 0.6)),
+    url(./images/2641087.gif);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-blend-mode: darken;
+  min-height: 100vh;
+  margin: 0;
+}
+
+div {
+  width: auto;
+  display: grid;
+  padding: 2%;
+  row-gap: 2%;
+  border-radius: 20px;
+  grid-template-columns: repeat(3, auto);
+  background-color: rgba(0, 0, 0, 0.332);
+}
+
+h1 {
+  color: rgb(255, 255, 255);
+}
+
+input {
+  padding: 5%;
+  border-radius: 50px;
+  text-align: center;
+  transition: all ease-in-out 500ms;
+}
+
+input:hover {
+  background-color: rgb(149, 252, 211);
+}
+
+button {
+  border-radius: 50px;
+  padding: 5%;
+  cursor: pointer;
+  border-style: none;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  text-transform: uppercase;
+  background-color: rgb(0, 255, 153);
+  transition: all ease-in-out 500ms;
+}
+
+button:hover {
+  background-color: rgb(255, 246, 68);
+}
+
+.swal2-popup {
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.alert-title {
+  font-size: 1.8rem;
+  color: #1d3557;
+}
+
+.alert-popup {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.alert-confirm-button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal2-popup {
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.success-title {
+  font-size: 1.8rem;
+  color: #1d3557;
+}
+
+.success-popup {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.success-confirm-button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+}
+
+.swal2-popup {
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.warning-title {
+  font-size: 1.8rem;
+  color: #856404;
+}
+
+.warning-popup {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+}
+
+.warning-confirm-button {
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 10px;
+}

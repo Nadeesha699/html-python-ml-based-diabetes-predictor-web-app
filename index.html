@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIABETIS PREDICTION</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <h1>DIABETS CHECKER</h1>
+    <div>
+      <input
+        type="number"
+        placeholder="Number of Pregnancies"
+        min="0"
+        id="Pregnancies"
+      />
+      <input type="number" placeholder="Glucose Level" min="0" id="Glucose" />
+      <input
+        type="number"
+        placeholder="Blood Pressure (mmHg)"
+        min="0"
+        id="BloodPressure"
+      />
+      <input
+        type="number"
+        placeholder="Skin Thickness (mm)"
+        min="0"
+        id="SkinThickness"
+      />
+      <input type="number" placeholder="Insulin Level" min="0" id="Insulin" />
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Body Mass Index (BMI)"
+        min="0"
+        id="BMI"
+      />
+      <input
+        type="number"
+        step="0.01"
+        placeholder="Diabetes Pedigree Function"
+        min="0"
+        id="DiabetesPedigreeFunction"
+      />
+      <input type="number" placeholder="Enter age" min="0" id="Age" />
+      <button id="btn_predict">check</button>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document
+      .getElementById("btn_predict")
+      .addEventListener("click", async () => {
+        try {
+          let Pregnancies = document.getElementById("Pregnancies").value;
+          let Glucose = document.getElementById("Glucose").value;
+          let BloodPressure = document.getElementById("BloodPressure").value;
+          let SkinThickness = document.getElementById("SkinThickness").value;
+          let Insulin = document.getElementById("Insulin").value;
+          let BMI = document.getElementById("BMI").value;
+          let DiabetesPedigreeFunction = document.getElementById(
+            "DiabetesPedigreeFunction"
+          ).value;
+          let Age = document.getElementById("Age").value;
+          if (
+            Pregnancies !== "" &&
+            Glucose !== "" &&
+            BloodPressure !== "" &&
+            SkinThickness !== "" &&
+            Insulin !== "" &&
+            BMI !== "" &&
+            DiabetesPedigreeFunction != "" &&
+            Age !== ""
+          ) {
+            const result = await fetch(
+              "http://localhost:5000/api/predict-diabetes",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                  Pregnancies: Pregnancies,
+                  Glucose: Glucose,
+                  BloodPressure: BloodPressure,
+                  SkinThickness: SkinThickness,
+                  Insulin: Insulin,
+                  BMI: BMI,
+                  DiabetesPedigreeFunction: DiabetesPedigreeFunction,
+                  Age: Age,
+                }),
+              }
+            );
+            const data = await result.json();
+            data.result !== "Non-Diabetic"
+              ? Swal.fire({
+                  title: "🚨 Health Alert",
+                  text: `You have diabetes. Follow your treatment plan and stay healthy!`,
+                  icon: "warning",
+                  background: "#fef9f5",
+                  iconColor: "#e63946",
+                  confirmButtonText: "Got it!",
+                  confirmButtonColor: "#e63946",
+                  customClass: {
+                    title: "alert-title",
+                    popup: "alert-popup",
+                    confirmButton: "alert-confirm-button",
+                  },
+                })
+              : Swal.fire({
+                  title: "🎉 Good News!",
+                  text: `You don’t have diabetes. Keep up the healthy lifestyle!`,
+                  icon: "success",
+                  background: "#d4edda",
+                  iconColor: "#28a745",
+                  confirmButtonText: "Great!",
+                  confirmButtonColor: "#28a745",
+                  customClass: {
+                    title: "success-title",
+                    popup: "success-popup",
+                    confirmButton: "success-confirm-button",
+                  },
+                });
+          } else {
+            Swal.fire({
+              title: "⚠️ Missing Information!",
+              text: "Please make sure all fields are filled before submitting.",
+              icon: "warning",
+              background: "#fff3cd",
+              iconColor: "#ffc107",
+              confirmButtonText: "Got it!",
+              confirmButtonColor: "#ffc107",
+              customClass: {
+                title: "warning-title",
+                popup: "warning-popup",
+                confirmButton: "warning-confirm-button",
+              },
+            });
+          }
+        } catch (e) {
+          console.log(e);
+        }
+      });
+  </script>
+</html>
